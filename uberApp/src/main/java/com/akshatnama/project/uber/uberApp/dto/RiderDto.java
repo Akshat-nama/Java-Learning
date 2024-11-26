@@ -1,5 +1,6 @@
 package com.akshatnama.project.uber.uberApp.dto;
 
+import com.akshatnama.project.uber.uberApp.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RiderDto {
 
+    private Long id;
     private UserDto user;
     private Double rating;
 }
-
