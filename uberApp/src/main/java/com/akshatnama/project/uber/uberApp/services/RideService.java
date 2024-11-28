@@ -3,21 +3,21 @@ package com.akshatnama.project.uber.uberApp.services;
 import com.akshatnama.project.uber.uberApp.dto.RideRequestDto;
 import com.akshatnama.project.uber.uberApp.entities.Driver;
 import com.akshatnama.project.uber.uberApp.entities.Ride;
+import com.akshatnama.project.uber.uberApp.entities.RideRequest;
+import com.akshatnama.project.uber.uberApp.entities.Rider;
 import com.akshatnama.project.uber.uberApp.entities.enums.RideStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 public interface RideService {
 
-    Ride getRideByIdI(Long rideId);
+    Ride getRideById(Long rideId);
 
-    void matchWithDrivers(RideRequestDto rideRequestDto);
+    Ride createNewRide(RideRequest rideRequest, Driver driver);
 
-    Ride createNewRide(RideRequestDto rideRequestDto, Driver driver);
+    Ride updateRideStatus(Ride ride, RideStatus rideStatus);
 
-    Ride updateRideStatus(Long rideId, RideStatus rideStatus);
+    Page<Ride> getAllRidesOfRider(Rider rider, PageRequest pageRequest);
 
-    Page<Ride> getAllRidesOfRider(Long riderId, PageRequest pageRequest);
-
-
+    Page<Ride> getAllRidesOfDriver(Driver driver, PageRequest pageRequest);
 }

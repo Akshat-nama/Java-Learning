@@ -5,17 +5,21 @@ import com.akshatnama.project.uber.uberApp.entities.enums.RideRequestStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.geolatte.geom.Point;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.ManyToAny;
+import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-
+@Table(
+        indexes = {
+                @Index(name = "idx_ride_request_rider", columnList = "rider_id")
+        }
+)
 public class RideRequest {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,4 +41,6 @@ public class RideRequest {
 
     @Enumerated(EnumType.STRING)
     private RideRequestStatus rideRequestStatus;
+
+    private Double fare;
 }

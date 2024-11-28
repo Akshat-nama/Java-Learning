@@ -2,16 +2,21 @@ package com.akshatnama.project.uber.uberApp.entities;
 
 import com.akshatnama.project.uber.uberApp.entities.enums.PaymentMethod;
 import com.akshatnama.project.uber.uberApp.entities.enums.PaymentStatus;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Builder
 public class Payment {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)
@@ -22,9 +27,9 @@ public class Payment {
 
     private Double amount;
 
-    @CreationTimestamp
-    private LocalDateTime paymentTime;
-
     @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
+
+    @CreationTimestamp
+    private LocalDateTime paymentTime;
 }
